@@ -36,9 +36,14 @@ namespace CNProject.Controllers
 
         public IActionResult Login() => View();
 
-        public IActionResult LoginActionAsync()
+        public async Task<IActionResult> LoginActionAsync(UserViewModel viewModel)
         {
-
+            AppUser user = await userManager.FindByEmailAsync(viewModel.Email);
+            if ((await sgnMgr.PasswordSignInAsync(user, viewModel.password, false, false)).Succeeded)
+            {
+                return Redirect( "/Home/Index");
+            }
+            return Redirect("/Home/Index");
         }
     }
 }
