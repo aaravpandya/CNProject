@@ -8,5 +8,7 @@ namespace CNProject.Models
 {
     public class AppUser : IdentityUser
     {
+
+        public AppUser() : base() { }
     }
 }

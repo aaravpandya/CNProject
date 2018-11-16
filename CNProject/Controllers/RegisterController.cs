@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CNProject.Controllers
 {
+
+    [Route("[controller]/[action]")]
     public class RegisterController : Controller
     {
         public UserManager<AppUser> userManager;
@@ -31,7 +33,7 @@ namespace CNProject.Controllers
             user.Email = viewModel.Email;
             user.UserName = viewModel.Name;
             await userManager.CreateAsync(user, viewModel.password);
-            return Redirect("/Home/Index");
+            return Redirect("/");
         }
 
         public IActionResult Login() => View();
@@ -41,9 +43,9 @@ namespace CNProject.Controllers
             AppUser user = await userManager.FindByEmailAsync(viewModel.Email);
             if ((await sgnMgr.PasswordSignInAsync(user, viewModel.password, false, false)).Succeeded)
             {
-                return Redirect( "/Home/Index");
+                return Redirect( "/Home/Welcome");
             }
-            return Redirect("/Home/Index");
+            return Redirect("/");
         }
     }
 }

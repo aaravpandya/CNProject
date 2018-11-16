@@ -31,7 +31,6 @@ namespace CNProject
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireDigit = false;
-                options.SignIn.RequireConfirmedEmail = true;
 
             })
                                         .AddEntityFrameworkStores<AppDbContext>()
@@ -49,11 +48,7 @@ namespace CNProject
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            
             app.UseStaticFiles();
             app.UseSession();
             app.UseAuthentication();
