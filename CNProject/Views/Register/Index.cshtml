@@ -1,0 +1,21 @@
+﻿@model UserViewModel
+
+<form asp-action="RegisterActionAsync" asp-controller="Register" method="post">
+    <div>
+        <label asp-for="Name">User Name</label>
+        <input type="text" class="form-control" placeholder="Enter your name"
+               asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Email">Email:</label>
+        <input type="text" class="form-control" placeholder="Enter your email"
+               asp-for="Email" />
+    </div><div>
+        <label asp-for="password">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter your password"
+               asp-for="password" />
+    </div>
+
+    <button type="submit" >Register</button>
+
+</form>
